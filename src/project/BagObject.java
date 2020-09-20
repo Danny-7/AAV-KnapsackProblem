@@ -1,19 +1,23 @@
 package project;
 
-import java.util.Comparator;
+public class BagObject {
+    private String name;
+    private double weight;
+    private double value;
 
-public class BagObject extends BagItem implements Comparator<BagObject>{
-	private double ratio;
-	
-	public BagObject(double weight, double value) {
-		super(weight, value);
-		this.ratio = (super.getValue()/super.getWeight());
-	}
+    public BagObject(String name, double weight, double value){
+        this.name = name;
+        this.weight = weight;
+        this.value = value;
+    }
 
-	public double getRatio() { return this.ratio; }
+    public double getWeight() {
+        return weight;
+    }
+    public double getValue() { return value; }
 
-	// methods which will be useFull for dynamic programming method
-	public int compare(BagObject o, BagObject o1) {
-		return Double.compare(o1.getRatio(), o.getRatio());
-	}
+    public String toString() {
+        return "Value:" + this.value +"\n" + "Weight: "+ this.weight;
+    }
+
 }

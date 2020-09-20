@@ -1,7 +1,6 @@
 package algorithms;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -19,10 +18,9 @@ public class Greedy {
 
 	public  List<BagObject> sortedByDescending(){
 		List<BagObject> listItems = bag.getList();
-		Collections.sort(listItems,
-				(BagObject o1, BagObject o2) ->
-						Double.compare(o2.getRatio(), o1.getRatio()));
-		
+		listItems.sort((BagObject o1, BagObject o2) ->
+						Double.compare(o2.getValue() /o2.getWeight(), o1.getValue()/o1.getWeight()));
+
 		return listItems;
 	}
 	
