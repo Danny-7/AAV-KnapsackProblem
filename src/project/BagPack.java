@@ -27,6 +27,14 @@ public class BagPack {
 	public ListIterator<BagObject> getIterator(){
 		return items.listIterator();
 	}
+	public double getBagWeight() {
+		double w = 0;
+		for(BagObject o: this.items){
+			if(o != null && o.getWeight() != 0.0)
+				w+= o.getWeight();
+		}
+		return w;
+	}
 
 	private void readObjects(String path){
 		try {
@@ -57,16 +65,14 @@ public class BagPack {
 	}
 	
 	public String toString() {
-		double weight = 0;
 		StringBuilder s = new StringBuilder();
 		ListIterator<BagObject> iterator = getIterator();
 
 		while(iterator.hasNext()) {
 			BagObject o = iterator.next();
-			weight += o.getWeight();
 			s.append(o.toString()).append(System.lineSeparator());
 		}
-		s.append("Weight of bag: ").append(weight);
+		s.append("\nBag weight: ").append(getBagWeight());
 		return s.toString();
 	}
 	

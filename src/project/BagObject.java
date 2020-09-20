@@ -17,7 +17,7 @@ public class BagObject {
     public double getValue() { return value; }
 
     public String toString() {
-        return "Value:" + this.value +"\n" + "Weight: "+ this.weight;
+        return this.name + "-> " +"Value: " + this.value +" - " + "Weight: "+ this.weight;
     }
 
 }
