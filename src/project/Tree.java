@@ -5,24 +5,44 @@ import java.util.List;
 
 public class Tree {
     private Tree leftTree, rightTree;
-    private List<BagObject> values;
-    private int depth;
-    private double upperBound;
-    private double lowerBound;
-    private List<BagObject> bestPath;
+    private double value;
+    private int depth; // profondeur de l'arbre
+    private double upperBound; // borne supérieure
+    private double lowerBound; // borne inférieure
+    private List<BagObject> bestPath; // solution finale
+    
+    public Tree() {}
+    
+    public Tree(double value) {
+    	this();
+    	this.value = value;
+    }
 
     public Tree(List<BagObject> items, double maxWeight, int index){
         if( index < items.size())
             throw new IllegalArgumentException("La profondeur de l'arbre est trop grande");
 
-        this.values = new ArrayList<>();
-
-        BagObject item;
-        for(int i = 0; i< items.size(); ++i){
-            item = items.get(i);
-            if(item != null)
-                this.values.add(item);
+        if(items.get(index).getValue() < this.value) {
+        	this.leftTree = new Tree(items.get(index).getValue());
+        	this.lowerBound = this.leftTree.getValue();
         }
-        this.depth = index;
+        if(items.get(index).getValue() > this.value) {
+        	this.rightTree = new Tree(items.get(index).getValue());
+        	this.lowerBound = this.rightTree.getValue();
+        }
+        
+        this.depth = ++index;
+    }
+    
+    public double getValue() {
+    	return this.value;
+    }
+    
+    public double getUpperBound(List<BagObject> items) {
+    	double value = this.value;
+    	for(BagObject item: items) {
+    		value += item.getValue();
+    	}
+    	return value; 
     }
 }
