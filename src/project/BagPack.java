@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+import algorithms.BnB;
 import algorithms.Dynamic;
 import algorithms.Greedy;
 
@@ -59,6 +60,9 @@ public class BagPack {
 				Dynamic dyn = new Dynamic(this);
 				items = dyn.resolve();
 				break;
+			case PSE:
+				BnB bnb = new BnB(this);
+				items = bnb.resolve();
 			default:
 		}
 
