@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import algorithms.utils.Util;
 import project.BagObject;
 import project.BagPack;
 
@@ -18,8 +19,10 @@ public class Greedy {
 
 	public  List<BagObject> sortedByDescending(){
 		List<BagObject> listItems = bag.getList();
-		listItems.sort((BagObject o1, BagObject o2) ->
-						Double.compare(o2.getValue() /o2.getWeight(), o1.getValue()/o1.getWeight()));
+//		listItems.sort((BagObject o1, BagObject o2) ->
+//						Double.compare(o2.getValue() /o2.getWeight(), o1.getValue()/o1.getWeight()));
+		Util util = new Util();
+		util.quickSort(listItems, 0, listItems.size()-1);
 
 		return listItems;
 	}

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Dynamic {
     private BagPack bag;
-    private List<BagObject> items = new ArrayList<>();
 
     public Dynamic(BagPack bag){
         this.bag = bag;

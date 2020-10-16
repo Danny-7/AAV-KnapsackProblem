@@ -14,7 +14,15 @@ public class BnB {
     }
 
     public  List<BagObject>  resolve(){
-        Tree tree = new Tree(this.bag.getList(),this.bag.getMaxWeight(),0);
-        return tree.pathToTheSolution();
+//        Tree tree = new Tree(this.bag.getList(),this.bag.getMaxWeight(),0);
+//        return tree.pathToTheSolution();
+        int length = this.bag.getList().size();
+        BagObject[] tabObj = new BagObject[length];
+
+        Tree tree = new Tree(bag.getList(), this.bag.getMaxWeight(), tabObj, 0);
+
+        tree.pathToTheSolution();
+
+        return Tree.getBestPath();
     }
 }

@@ -2,11 +2,13 @@ package project;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import algorithms.BnB;
 import algorithms.Dynamic;
 import algorithms.Greedy;
+import algorithms.utils.ALGORITHM;
 
 public class BagPack {
 	private double maxWeight;
@@ -23,11 +25,12 @@ public class BagPack {
 	}
 	public int getSizeOfList() { return this.items.size();}
 	public List<BagObject> getList(){
-		return new LinkedList<>(items) ;
+		return new ArrayList<>(items) ;
 	}
 	public ListIterator<BagObject> getIterator(){
 		return items.listIterator();
 	}
+
 	public double getBagWeight() {
 		double w = 0;
 		for(BagObject o: this.items){
@@ -35,6 +38,15 @@ public class BagPack {
 				w+= o.getWeight();
 		}
 		return w;
+	}
+
+	public double getBagValue(){
+		double value = 0.0;
+		for(BagObject o: this.items){
+			if(o != null && o.getValue() != 0.0)
+				value+= o.getValue();
+		}
+		return value;
 	}
 
 	private void readObjects(String path){
@@ -70,13 +82,14 @@ public class BagPack {
 	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		ListIterator<BagObject> iterator = getIterator();
 
-		while(iterator.hasNext()) {
-			BagObject o = iterator.next();
-			s.append(o.toString()).append(System.lineSeparator());
+		for(BagObject item: items){
+			if(item != null){
+				s.append(item.toString()).append(System.lineSeparator());
+			}
 		}
-		s.append("\nBag weight: ").append(getBagWeight());
+		s.append("\nBag weight: ").append(new DecimalFormat("#.00").format(getBagWeight()));
+		s.append("\nBag value: ").append(new DecimalFormat("#.00").format(getBagValue()));
 		return s.toString();
 	}
 	
