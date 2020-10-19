@@ -16,7 +16,9 @@ public class BagPack {
 
 	public BagPack(){
 		this.maxWeight = 0;
+		items = new LinkedList<>();
 	}
+
 	public BagPack(String path, double maxWeight) {
 		this.items = new LinkedList<>();
 		readObjects(path);
