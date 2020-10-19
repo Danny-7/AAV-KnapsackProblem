@@ -13,6 +13,10 @@ public class Dynamic {
         this.bag = bag;
     }
 
+    /**
+     * Building a matrix for knapsack problem
+     * @return best solution using dynamic programming
+     */
     public List<BagObject> resolve() {
         List<BagObject> items = new ArrayList<>();
         final int NB_OBJECTS = bag.getSizeOfList();

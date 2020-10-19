@@ -5,6 +5,7 @@ public class BagObject implements Comparable<BagObject>{
     private double weight;
     private double value;
 
+
     public BagObject(String name, double weight, double value){
         this.name = name;
         this.weight = weight;

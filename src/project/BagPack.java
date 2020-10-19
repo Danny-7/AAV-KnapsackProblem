@@ -14,6 +14,9 @@ public class BagPack {
 	private double maxWeight;
 	private List<BagObject> items;
 
+	public BagPack(){
+		this.maxWeight = 0;
+	}
 	public BagPack(String path, double maxWeight) {
 		this.items = new LinkedList<>();
 		readObjects(path);
@@ -31,6 +34,10 @@ public class BagPack {
 		return items.listIterator();
 	}
 
+	/**
+	 * Calculate the bag weight
+	 * @return bag weight
+	 */
 	public double getBagWeight() {
 		double w = 0;
 		for(BagObject o: this.items){
@@ -40,6 +47,10 @@ public class BagPack {
 		return w;
 	}
 
+	/**
+	 * Calculate the bag value
+	 * @return bag value
+	 */
 	public double getBagValue(){
 		double value = 0.0;
 		for(BagObject o: this.items){
@@ -49,6 +60,10 @@ public class BagPack {
 		return value;
 	}
 
+	/**
+	 * Read a file of objects
+	 * @param path file path
+	 */
 	private void readObjects(String path){
 		try {
 			Scanner file = new Scanner(new FileInputStream(path));
@@ -61,6 +76,10 @@ public class BagPack {
 		}
 	}
 
+	/**
+	 * Resolve the knapsack problem using one of the methods under
+	 * @param algo algorithm selected
+	 */
 	public void resolve(ALGORITHM algo) {
 		switch (algo){
 			case GREEDY:

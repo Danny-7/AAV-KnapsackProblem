@@ -1,8 +1,8 @@
 package algorithms;
 
+import algorithms.utils.Tree;
 import project.BagObject;
 import project.BagPack;
-import project.Tree;
 
 import java.util.List;
 
@@ -13,13 +13,14 @@ public class BnB {
         this.bag = bag;
     }
 
+    /**
+     * Resolve the knapsack problem using branc and bound least and cost
+     * @return best solution in a list
+     */
     public  List<BagObject>  resolve(){
-//        Tree tree = new Tree(this.bag.getList(),this.bag.getMaxWeight(),0);
-//        return tree.pathToTheSolution();
         int length = this.bag.getList().size();
-        BagObject[] tabObj = new BagObject[length];
-
-        Tree tree = new Tree(bag.getList(), this.bag.getMaxWeight(), tabObj, 0);
+        BagObject[] currentItems = new BagObject[length];
+        Tree tree = new Tree(bag.getList(), this.bag.getMaxWeight(), currentItems, 0);
 
         tree.pathToTheSolution();
 

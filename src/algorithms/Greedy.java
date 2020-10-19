@@ -1,9 +1,6 @@
 package algorithms;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 import algorithms.utils.Util;
 import project.BagObject;
@@ -17,6 +14,10 @@ public class Greedy {
 		this.bag = bag;
 	}
 
+	/**
+	 * Sort a list uisng quickSort implementation
+	 * @return list sorted by descending
+	 */
 	public  List<BagObject> sortedByDescending(){
 		List<BagObject> listItems = bag.getList();
 //		listItems.sort((BagObject o1, BagObject o2) ->
@@ -26,15 +27,20 @@ public class Greedy {
 
 		return listItems;
 	}
-	
+
+	/**
+	 * Find the solution for knapsack using greedy approach
+	 * @param items items to evaluate
+	 * @return new list with the right items
+	 */
 	public List<BagObject> solution(ListIterator<BagObject> items){
-		// créer une nouvelle liste avec les objets avec le meilleur ratio
-		List<BagObject> finalList = new LinkedList<>();
-		double i = 0;
-		while(i < bag.getMaxWeight() && items.hasNext()) {
+		// create a new list with the best ratio
+		List<BagObject> finalList = new ArrayList<>();
+		double currentWeight = 0;
+		while(currentWeight < bag.getMaxWeight() && items.hasNext()) {
 			BagObject o = items.next();
-			i+= o.getWeight();
-			if(i <= bag.getMaxWeight())
+			currentWeight+= o.getWeight();
+			if(currentWeight <= bag.getMaxWeight())
 				finalList.add(o);
 		}
 		return finalList;
