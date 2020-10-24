@@ -87,7 +87,7 @@ public class BagPack {
 			case GREEDY:
 				Greedy greedy = new Greedy(this);
 				items = greedy.sortedByDescending();
-				items = greedy.solution(getIterator());
+				items = greedy.solution(items);
 				break;
 			case DYNAMIC:
 				Dynamic dyn = new Dynamic(this);

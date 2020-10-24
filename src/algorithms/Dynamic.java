@@ -55,7 +55,7 @@ public class Dynamic {
                 --i;
             item = bag.getList().get(i-1);
             j-= (int) item.getWeight(); // removing the weight of the current object
-            if (j > 0) {
+            if (j >= 0) {
                 items.add(item);
             }
             --i;

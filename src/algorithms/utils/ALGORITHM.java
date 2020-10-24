@@ -9,6 +9,11 @@ public enum ALGORITHM {
         this.algorithm = algorithm;
     }
 
+    /**
+     * Return true if the string is equal to an enum
+     * @param test string to test
+     * @return true or false
+     */
     public static boolean contains(String test) {
         for (ALGORITHM a : ALGORITHM.values()) {
             if (a.algorithm.equals(test.toUpperCase()))

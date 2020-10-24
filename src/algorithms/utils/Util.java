@@ -7,6 +7,13 @@ import java.util.List;
 
 public class Util {
 
+    /**
+     * Sort item on deacreasing order
+     * @param items items to sort
+     * @param first the first index
+     * @param last size of items list
+     * @return sorted list
+     */
     public List<BagObject> quickSort(List<BagObject> items, int first, int last) {
         if(first < last){
             Result result;

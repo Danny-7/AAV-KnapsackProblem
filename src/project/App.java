@@ -8,9 +8,9 @@ public class App {
 	public static final int NB_ARGS = 3;
 
 	public static void main(String[] args) {
-		System.out.println("Follow this pattern -> file; max weight; method (greedy, dynamic or pse) ");
+		System.out.println("Follow this pattern -> file  max weight  method (greedy, dynamic or pse) ");
 		Scanner sc = new Scanner(System.in);
-		String[] arguments = sc.nextLine().trim().split(";");
+		String[] arguments = sc.nextLine().trim().split(" ");
 		if(checkCommand(arguments)){
 			ALGORITHM choice = ALGORITHM.valueOf(arguments[2].toUpperCase());
 			BagPack bag = new BagPack(arguments[0], Double.parseDouble(arguments[1]));
