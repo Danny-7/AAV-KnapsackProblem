@@ -8,13 +8,14 @@ import java.util.List;
 public class Util {
 
     /**
-     * Sort item on deacreasing order
+     * Sort item on decreasing order
      * @param items items to sort
      * @param first the first index
      * @param last size of items list
      * @return sorted list
      */
-    public List<BagObject> quickSort(List<BagObject> items, int first, int last) {
+    public List<BagObject> quickSort(List<BagObject> items, int first,
+                                     int last) {
         if(first < last){
             Result result;
             int pivot = pivotChoice(first, last);
@@ -31,7 +32,8 @@ public class Util {
         return (first + last) /2;
     }
 
-    private Result repartition(List<BagObject> items, int first, int last, int pivot){
+    private Result repartition(List<BagObject> items, int first,
+                               int last, int pivot){
         // get pivot and list of items
         Result result = new Result();
         // swap the last and pivot
@@ -52,7 +54,8 @@ public class Util {
     }
 
     // allow to swap between the last and pivot of a list
-    private List<BagObject> swap(List<BagObject> items, int last, int pivot){
+    private List<BagObject> swap(List<BagObject> items, int last,
+                                 int pivot){
         BagObject obj = items.get(pivot);
         items.set(pivot,items.get(last));
         items.set(last, obj);

@@ -20,7 +20,8 @@ public class BnB {
     public  List<BagObject>  resolve(){
         int length = this.bag.getList().size();
         BagObject[] currentItems = new BagObject[length];
-        Tree tree = new Tree(bag.getList(), this.bag.getMaxWeight(), currentItems, 0);
+        Tree tree = new Tree(bag.getList(), this.bag.getMaxWeight(),
+                currentItems, 0);
 
         tree.pathToTheSolution();
 

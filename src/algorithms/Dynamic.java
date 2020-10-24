@@ -32,12 +32,14 @@ public class Dynamic {
             for(int j = 0; j <= MAX_WEIGHT; ++j){
                 //get the current object
                 item = bag.getList().get(i-1);
-                // weight of current object upper than the current column index we take the previous value
+                // weight of current object upper than the current
+                // column index we take the previous value
                 if (item.getWeight() > j)
                     matrix[i][j] = matrix[i-1][j];
                 else
                     matrix[i][j] = Math.max(matrix[i-1][j],
-                            item.getValue() + matrix[i-1][j - (int) item.getWeight()]);
+                            item.getValue() +
+                                    matrix[i-1][j - (int) item.getWeight()]);
             }
         }
 
@@ -54,7 +56,8 @@ public class Dynamic {
             while(i > 0 && matrix[i][j] == matrix[i - 1][j])
                 --i;
             item = bag.getList().get(i-1);
-            j-= (int) item.getWeight(); // removing the weight of the current object
+            j-= (int) item.getWeight(); // removing the weight of
+            // the current object
             if (j >= 0) {
                 items.add(item);
             }

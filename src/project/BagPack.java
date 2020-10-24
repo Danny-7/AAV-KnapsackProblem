@@ -28,12 +28,11 @@ public class BagPack {
 	public double getMaxWeight() {
 		return this.maxWeight;
 	}
-	public int getSizeOfList() { return this.items.size();}
+	public int getSizeOfList() {
+		return this.items.size();
+	}
 	public List<BagObject> getList(){
 		return new ArrayList<>(items) ;
-	}
-	public ListIterator<BagObject> getIterator(){
-		return items.listIterator();
 	}
 
 	/**
@@ -71,7 +70,8 @@ public class BagPack {
 			Scanner file = new Scanner(new FileInputStream(path));
 			while(file.hasNextLine()){
 				String[] line = file.nextLine().split(";");
-				items.add(new BagObject(line[0],Double.parseDouble(line[1]), Double.parseDouble(line[2])));
+				items.add(new BagObject(line[0],Double.parseDouble(line[1]),
+						Double.parseDouble(line[2])));
 			}
 		}catch(FileNotFoundException fs){
 			System.out.println(fs.getMessage());
@@ -109,8 +109,10 @@ public class BagPack {
 				s.append(item.toString()).append(System.lineSeparator());
 			}
 		}
-		s.append("\nBag weight: ").append(new DecimalFormat("#.00").format(getBagWeight()));
-		s.append("\nBag value: ").append(new DecimalFormat("#.00").format(getBagValue()));
+		s.append("\nBag weight: ")
+				.append(new DecimalFormat("#.00").format(getBagWeight()));
+		s.append("\nBag value: ")
+				.append(new DecimalFormat("#.00").format(getBagValue()));
 		return s.toString();
 	}
 	

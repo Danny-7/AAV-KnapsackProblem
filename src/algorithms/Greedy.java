@@ -36,7 +36,8 @@ public class Greedy {
 		// create a new list with the best ratio
 		List<BagObject> finalList = new ArrayList<>();
 		for(BagObject o: items){
-			if(getCurrentWeight(finalList) + o.getWeight() <= bag.getMaxWeight())
+			if(getCurrentWeight(finalList) +
+					o.getWeight() <= bag.getMaxWeight())
 				finalList.add(o);
 		}
 		return finalList;

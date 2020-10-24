@@ -28,7 +28,8 @@ public class Tree {
      * @param currentItems the current items on the node
      * @param index how high are we
      */
-    public Tree(List<BagObject> items, double maxWeight, BagObject[] currentItems, int index){
+    public Tree(List<BagObject> items, double maxWeight,
+                BagObject[] currentItems, int index){
         this.values = Arrays.stream(currentItems).collect(Collectors.toList());
 
         this.depth = index;
@@ -39,9 +40,11 @@ public class Tree {
             this.leftTree = new Tree(items, maxWeight, currentItems, index+1);
 
             currentItems[index] = items.get(index);
-            if (this.getListWeight(currentItems)<=maxWeight && this.upperBound>getLowerBound()){
+            if (this.getListWeight(currentItems)<=maxWeight &&
+                    this.upperBound>getLowerBound()){
 
-                this.rightTree = new Tree(items, maxWeight, currentItems, index+1);
+                this.rightTree = new Tree(items, maxWeight,
+                        currentItems, index+1);
             }
             currentItems[index] = null;
         }

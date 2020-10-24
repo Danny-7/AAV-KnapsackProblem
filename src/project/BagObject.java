@@ -23,11 +23,13 @@ public class BagObject implements Comparable<BagObject>{
     public double getValue() { return this.value; }
 
     public String toString() {
-        return this.name + "-> " +"Value: " + this.value +" - " + "Weight: "+ this.weight;
+        return this.name + "-> " +"Value: " +
+                this.value +" - " + "Weight: "+ this.weight;
     }
 
     @Override
     public int compareTo(BagObject o) {
-        return Double.compare(this.getValue() /this.getWeight(), o.getValue()/o.getWeight());
+        return Double.compare(this.getValue() /this.getWeight(),
+                o.getValue()/o.getWeight());
     }
 }
