@@ -1,9 +1,11 @@
 package project;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import algorithms.BnB;
 import algorithms.Dynamic;
@@ -20,8 +22,8 @@ public class BagPack {
 	}
 
 	public BagPack(String path, double maxWeight) {
-		this.items = new LinkedList<>();
-		readObjects(path);
+		List<BagObject> temp = readObjects(path);
+		this.items = temp != null ? temp : new LinkedList<>();
 		this.maxWeight = maxWeight;
 	}
 
@@ -65,18 +67,22 @@ public class BagPack {
 	 * Read a file of objects
 	 * @param path file path
 	 */
-	private void readObjects(String path){
-		try {
-			Scanner file = new Scanner(new FileInputStream(path));
-			while(file.hasNextLine()){
-				String[] line = file.nextLine().split(";");
-				items.add(new BagObject(line[0],Double.parseDouble(line[1]),
-						Double.parseDouble(line[2])));
-			}
-		}catch(FileNotFoundException fs){
-			System.out.println(fs.getMessage());
-		}
-	}
+	private List<BagObject> readObjects(String path) {
+	    try {
+		   return Files.lines(Paths.get(path))
+				.map(line -> line.split(";"))
+				.filter(line -> (line.length == 3))
+				.map(line -> new BagObject(line[0],
+						Double.parseDouble(line[1]),
+						Double.parseDouble(line[2]))
+				)
+				   .collect(Collectors.toList());
+
+        }catch(IOException e){
+            System.err.println(e.getMessage());
+			return null;
+        }
+    }
 
 	/**
 	 * Resolve the knapsack problem using one of the methods under

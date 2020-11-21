@@ -39,10 +39,7 @@ public class App {
 		boolean weight = arguments[1].chars().allMatch(Character:: isDigit);
 		boolean algorithm = ALGORITHM.contains(arguments[2]);
 
-		if(!file || !weight || !algorithm)
-			return false;
-		else
-			return true;
+		return file && weight && algorithm;
 	}
 
 }
